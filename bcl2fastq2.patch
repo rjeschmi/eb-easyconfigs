@@ -1,0 +1,26 @@
+diff -ru bcl2fastq.dist/src/cmake/cxxConfigure.cmake bcl2fastq.new/src/cmake/cxxConfigure.cmake
+--- bcl2fastq.dist/src/cmake/cxxConfigure.cmake	2015-02-12 13:00:58.000000000 -0500
++++ bcl2fastq.new/src/cmake/cxxConfigure.cmake	2015-04-10 15:40:44.005923031 -0400
+@@ -100,22 +100,6 @@
+ # CPPUNIT
+ bcl2fastq_find_library(CPPUNIT "cppunit/Test.h" cppunit${CPPUNIT_DEBUG})
+ 
+-# XML2 - bootstrap first (if necessary) so xslt can build against it 
+-# XSLT and EXSLT
+-if((NOT HAVE_LIBXML2) OR (NOT HAVE_LIBXSLT))
+-  find_package_version(LibXml2 ${BCL2FASTQ_LIBXML2_VERSION})
+-  find_package_version(LibXslt ${BCL2FASTQ_LIBXSLT_VERSION})
+-endif((NOT HAVE_LIBXML2) OR (NOT HAVE_LIBXSLT))
+-
+-if((NOT HAVE_LIBXML2) OR (NOT HAVE_LIBXSLT))
+-  redist_package(LIBXML2 ${BCL2FASTQ_LIBXML2_VERSION} 
+-                 "--prefix=${REINSTDIR};--without-modules;--without-http;--without-ftp;--without-python;--without-threads;--without-schematron;--without-debug;--without-iconv")
+-  find_library_redist(LIBXML2 ${REINSTDIR} libxml/xpath.h xml2)
+-  redist_package(LIBXSLT ${BCL2FASTQ_LIBXSLT_VERSION} "--prefix=${REINSTDIR};--with-libxml-prefix=${REINSTDIR};--without-plugins;--without-crypto")
+-  find_library_redist(LIBEXSLT ${REINSTDIR} libexslt/exslt.h exslt)
+-  find_library_redist(LIBXSLT ${REINSTDIR} libxslt/xsltconfig.h xslt)
+-endif((NOT HAVE_LIBXML2) OR (NOT HAVE_LIBXSLT))
+-
+ include_directories(BEFORE SYSTEM ${LIBXML2_INCLUDE_DIR})
+ include_directories(BEFORE SYSTEM ${LIBXSLT_INCLUDE_DIR})
+ include_directories(BEFORE SYSTEM ${LIBEXSLT_INCLUDE_DIR})
