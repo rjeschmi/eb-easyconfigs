@@ -1,0 +1,27 @@
+
+
+easyblock = 'MakeCp'
+
+name = 'PeakRanger'
+version = '1.18'
+
+homepage = 'http://ranger.sourceforge.net/'
+
+description = "PeakRanger is a multi-purporse software suite for analyzing next-generation sequencing (NGS) data."
+
+toolchain = {'name': 'foss', 'version': '2015a'}
+
+sources = ['%s-%s-src.zip' % (name, version)]
+source_urls = ['http://download.sourceforge.net/ranger']
+
+binfiles = ['bin/peakranger']
+
+dependencies = [('zlib', '1.2.8'), 
+    ('Boost', '1.55.0','-Python-2.7.9')]
+
+files_to_copy = [(binfiles, 'bin')]
+
+sanity_check_paths = {
+    'files': [ 'bin/peakranger'],
+    'dirs':   []
+}

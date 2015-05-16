@@ -1,0 +1,41 @@
+easyblock = 'CMakeMake'
+
+name = 'bcl2fastq2'
+version = 'v2.16.0.10'
+
+homepage = 'http://support.illumina.com/downloads/bcl2fastq_conversion_software_184.html'
+description = """The Bcl2FastQ conversion software is a tool to handle bcl conversion and demultiplexing. 
+    Version 1.8.4 has added ability to mask multiple adapter sequences per read, has standard Illumina 
+    adapter sequences included in the bcl2fastq installation, and the stringency of the adapter masking 
+    feature is now configurable."""
+
+toolchain = {'name': 'foss', 'version': '2015a'}
+
+sources = [SOURCELOWER_TAR_GZ]
+source_urls = ['ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/Software/bcl2fastq/']
+
+builddependencies = [
+    ('CMake', '2.8.12'), 
+    ('Boost', '1.55.0', '-Python-2.7.9'), 
+    ('libxml2', '2.9.2'),
+    ('libxslt', '1.1.28'),
+    ('zlib','1.2.8'),
+]
+
+preconfigopts = 'export BOOST_ROOT=$EBROOTBOOST HAVE_LIBXML2=1 HAVE_LIBXSLT && '
+#configure_cmd_prefix = "../src/"
+#configopts = "--with-cmake=$EBROOTCMAKE/bin/cmake"
+#prebuildopts = 'export LIBXML2_INCLUDE_DIR=$EBROOTLIBXML2/include/libxml2 && cd build && '
+#preinstallopts = 'cd build && '
+buildopts = ' $(xml2-config --cflags) '
+
+srcdir = '../src'
+separate_build_dir = True
+
+patches = ['bcl2fastq2.patch']
+sanity_check_paths = {
+    'files': [],
+    'dirs': [],
+}
+
+moduleclass = 'bio'

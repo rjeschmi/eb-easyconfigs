@@ -1,0 +1,24 @@
+
+
+easyblock = 'MakeCp'
+
+name = 'HISAT'
+version = '0.1.6-beta'
+
+homepage = 'http://ccb.jhu.edu/software/hisat/index.shtml'
+
+description = "Hierarchical Indexing for Spliced Alignment of Transcripts"
+
+toolchain = {'name': 'foss', 'version': '2015a'}
+
+sources = ['%s-%s-source.zip' % (name.lower(), version)]
+source_urls = ['http://ccb.jhu.edu/software/hisat/downloads']
+
+binfiles = ['hisat', 'hisat-align-s', 'hisat-align-l', 'hisat-build', 'hisat-build-s', 'hisat-build-l', 'hisat-inspect', 'hisat-inspect-s', 'hisat-inspect-l']
+
+files_to_copy = [(binfiles, 'bin')]
+
+sanity_check_paths = {
+    'files': [ 'bin/hisat'],
+    'dirs':   []
+}

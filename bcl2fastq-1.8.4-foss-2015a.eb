@@ -1,0 +1,24 @@
+easyblock = 'ConfigureMake'
+
+name = 'bcl2fastq'
+version = '1.8.4'
+
+homepage = 'http://support.illumina.com/downloads/bcl2fastq_conversion_software_184.html'
+description = """The Bcl2FastQ conversion software is a tool to handle bcl conversion and demultiplexing. 
+    Version 1.8.4 has added ability to mask multiple adapter sequences per read, has standard Illumina 
+    adapter sequences included in the bcl2fastq installation, and the stringency of the adapter masking 
+    feature is now configurable."""
+
+toolchain = {'name': 'foss', 'version': '2015a'}
+
+sources = [SOURCELOWER_TAR_BZ2]
+source_urls = ['ftp://webdata:webdata@ussd-ftp.illumina.com/Downloads/Software/bcl2fastq/']
+
+preconfigopts = 'cd src && '
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': [],
+}
+
+moduleclass = 'lib'
