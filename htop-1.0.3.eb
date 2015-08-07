@@ -1,0 +1,26 @@
+# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
+easyblock = 'ConfigureMake'
+
+name = 'htop'
+version = '1.0.3'
+
+homepage = 'http://hisham.hm/htop'
+description = """This is htop, an interactive process viewer for Linux.
+  It is a text-mode application (for console or X terminals)"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchainopts = { 'pic': True , 'optarch': False }
+
+dependencies = [('ncurses', '5.9')]
+# http://hisham.hm/htop/releases/1.0.3/htop-1.0.3.tar.gz
+source_urls = ['http://hisham.hm/htop/releases/%(version)s/']
+sources = [SOURCE_TAR_GZ]
+
+configopts = '--enable-static --enable-taskstats --enable-unicode --enable-cgroup --disable-libtool-lock --enable-native-affinity --enable-hwloc --enable-oom'
+
+sanity_check_paths = {
+    'files': ["bin/htop"],
+    'dirs': [],
+}
+
+moduleclass = 'tools'
