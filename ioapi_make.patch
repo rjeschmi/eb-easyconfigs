@@ -1,0 +1,31 @@
+--- /software/arch/amd64/build/ioapi/3.1/pgimvapich2-2015b/Makefile	2011-09-28 09:27:47.000000000 -0700
++++ Makefile	2015-05-14 18:22:51.000000000 -0700
+@@ -92,20 +92,20 @@
+ #       Defining BIN3_DEBUG turns on trace-messages for native-binary
+ #       mode routines.
+ 
+-BASEDIR    = ${HOME}/web31
+-INSTALL    = /SOMEWHERE
++BASEDIR    = $(BUILDDIR)
++INSTALL    = $(INSTALLDIR)
+ LIBINST    = $(INSTALL)/$(BIN)
+ BININST    = $(INSTALL)/$(BIN)
+ 
+-CPLMODE    = cpl
+-IOAPIDEFS  = -DIOAPICPL
+-PVMINCL    = $(PVM_ROOT)/conf/$(PVM_ARCH).def
++#CPLMODE    = cpl
++#IOAPIDEFS  = -DIOAPICPL
++#PVMINCL    = $(PVM_ROOT)/conf/$(PVM_ARCH).def
+ 
+ #               ****   Variants   ****
+ #
+-# CPLMODE  = nocpl              #  turn off PVM coupling mode
+-# IOAPIDEFS=                    #  for "nocpl"
+-# PVMINCL  = /dev/null          #  for "nocpl"
++CPLMODE  = nocpl
++IOAPIDEFS=                    #  for "nocpl"
++PVMINCL  = /dev/null          #  for "nocpl"
+ # PVM_ROOT = <for "cpl":  root for PVM installation>
+ # PVM_ARCH = <for "cpl":  PVM machine/compiler type; may need to override>
+ # BIN      = <I/O AIP machine/compiler-type for $(IODIR)/Makeinclude.*>
