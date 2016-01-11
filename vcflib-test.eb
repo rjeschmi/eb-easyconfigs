@@ -1,0 +1,14 @@
+
+
+easyblock = 'GitSubmodule'
+
+name = 'vcflib'
+version = 'git'
+
+homepage = 'https://github.com/ekg/vcflib'
+
+description = 'vcf library'
+
+toolchain = {'name': 'foss', 'version': '2015a'}
+
+source_urls = ['https://github.com/ekg/vcflib.git']
