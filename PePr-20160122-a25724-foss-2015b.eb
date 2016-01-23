@@ -1,0 +1,43 @@
+
+
+
+easyblock = "PythonPackage"
+
+name = "PePr"
+version = "20150122"
+
+homepage = ['https://github.com/shawnzhangyx/PePr']
+description = """
+    PePr is a ChIP-Seq Peak-calling and Prioritization pipeline that uses a 
+    sliding window approach and models read counts across replicates and between 
+    groups with a negative binomial distribution.
+    """
+
+toolchain = {'name': 'foss', 'version': '2015b'}
+
+gh_user = "shawnzhangyx"
+gh_commit = "a25724"
+
+
+source_urls = ['https://github.com/%s/%s/archive/' % (gh_user, name)]
+sources = ['%s.tar.gz' % (gh_commit)]
+
+python = "Python"
+python_version = "2.7.10"
+versionsuffix = '-%s-%s' % (python, python_version)
+
+dependencies = [
+    (python, python_version)
+]
+
+py_short_ver = ".".join(python_version.split(".")[0:2])
+pylibdir = "lib/python%s/site-packages/%s" % (py_short_ver, name)
+
+sanity_check_commands = [('python', "-c 'import PePr'")]
+sanity_check_paths = {
+                      'files': [],
+                      'dirs': [pylibdir]
+                     }
+
+moduleclass = 'tools'
+
