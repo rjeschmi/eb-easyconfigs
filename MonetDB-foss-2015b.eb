@@ -1,0 +1,23 @@
+
+easyblock = "ConfigureMake"
+
+name = "MonetDB"
+version = "11.21.11"
+
+homepage = 'https://www.monetdb.org'
+description = """A column store that can work on SAM/BAM files"""
+
+toolchain = {'name': 'foss', 'version': '2015b'}
+
+sources = ['%(name)s-%(version)s.tar.xz']
+source_urls = ['https://www.monetdb.org/downloads/sources/Jul2015-SP1/']
+
+dependencies = [
+  ('SAMtools', '0.1.19'),
+]
+
+# The sanity test MUST be tuned before going production and submitting your contribution to upstream git repositories
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
