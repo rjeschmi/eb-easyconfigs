@@ -1,0 +1,24 @@
+
+
+easyblock = 'MakeCp'
+
+name = 'HISAT2'
+version = '2.0.1-beta'
+
+homepage = 'http://ccb.jhu.edu/software/hisat/index.shtml'
+
+description = "Hierarchical Indexing for Spliced Alignment of Transcripts"
+
+toolchain = {'name': 'foss', 'version': '2015b'}
+
+sources = ['%s-%s-source.zip' % (name.lower(), version)]
+source_urls = ['ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/']
+binfiles = ['hisat2', 'hisat2-align-s', 'hisat2-align-l', 'hisat2-build', 'hisat2-build-s', 'hisat2-build-l', 'hisat2-inspect', 'hisat2-inspect-s', 'hisat2-inspect-l']
+
+#make USE_SRA=1 NCBI_NGS_DIR=/path/to/NCBI-NGS-directory NCBI_VDB_DIR=/path/to/NCBI-NGS-directory, where NCBI_NGS_DIR and NCBI_VDB_DIR
+files_to_copy = [(binfiles, 'bin')]
+
+sanity_check_paths = {
+    'files': [ 'bin/hisat2'],
+    'dirs':   []
+}
