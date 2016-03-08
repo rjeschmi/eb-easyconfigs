@@ -1,0 +1,30 @@
+diff -ru stringtie-1.2.2/Makefile stringtie-1.2.2.new/Makefile
+--- stringtie-1.2.2/Makefile	2016-02-19 19:00:12.000000000 -0500
++++ stringtie-1.2.2.new/Makefile	2016-03-03 12:20:41.535729866 -0500
+@@ -69,7 +69,7 @@
+ ifneq (,$(filter %release %static, $(MAKECMDGOALS)))
+   # -- release build
+   CFLAGS := -O3 -DNDEBUG -g $(BASEFLAGS)
+-  LDFLAGS := -g -L${BAM} ${LFLAGS}
++  LDFLAGS := -g -L${BAM} -L${EBROOTZLIB}/lib ${LFLAGS}
+   ifneq (,$(findstring static,$(MAKECMDGOALS)))
+     LDFLAGS += -static-libstdc++ -static-libgcc
+   endif
+@@ -88,7 +88,7 @@
+        #CFLAGS += -fcheck-pointer-bounds -mmpx
+      endif
+      CFLAGS := -g -DDEBUG -D_DEBUG -DGDEBUG -fno-common -fstack-protector $(CFLAGS)
+-     LDFLAGS := -g -L${BAM}
++     LDFLAGS := -g -L${BAM} -L${EBROOTZLIB}/lib -lz
+      #LIBS := -Wl,-Bstatic -lasan -lubsan -Wl,-Bdynamic -ldl $(LIBS)
+      LIBS := -lasan -lubsan -ldl $(LIBS)
+   else
+@@ -98,7 +98,7 @@
+    endif
+    #just plain debug build
+     CFLAGS := -g -DDEBUG -D_DEBUG -DGDEBUG $(BASEFLAGS)
+-    LDFLAGS := -g -L${BAM}
++    LDFLAGS := -g -L${BAM} -L${EBROOTZLIB}/lib -lz
+   endif
+ endif
+ 

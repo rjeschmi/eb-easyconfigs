@@ -1,0 +1,24 @@
+easyblock = "ConfigureMake"
+
+name = "hashdeep"
+version = "4.4"
+homepage = "http://md5deep.sourceforge.net/"
+
+description = """hashdeep is a program to compute, match, and audit hashsets. With traditional matching, programs report if an input file matched one in a set of knows or if the input file did not match. It's hard to get a complete sense of the state of the input files compared to the set of knowns. It's possible to have matched files, missing files, files that have moved in the set, and to find new files not in the set. Hashdeep can report all of these conditions. It can even spot hash collisions, when an input file matches a known file in one hash algorithm but not in others. The results are displayed in an audit report."""
+
+toolchain = { 'name': "foss", 'version': "2015b" }
+
+source_urls = ['https://github.com/jessek/hashdeep/archive/']
+sources = ['v%(version)s.tar.gz']
+
+builddependencies = [('Autotools', '20150215', '', ('GNU', '4.9.3-2.25'))]
+
+preconfigopts = "sh ./bootstrap.sh && "
+
+sanity_check_paths = {
+    'files': ["bin/hashdeep"],
+    'dirs': [],
+}
+
+moduleclass = 'tools'
+

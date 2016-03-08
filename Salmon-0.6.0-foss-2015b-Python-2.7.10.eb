@@ -1,0 +1,30 @@
+easyblock = 'CMakeMake'
+
+name = 'Salmon'
+version = '0.6.0'
+
+homepage = 'https://github.com/COMBINE-lab/salmon'
+description = """Salmon is a wicked-fast program to produce a highly-accurate,
+ transcript-level quantification estimates from RNA-seq data."""
+
+toolchain = {'name': 'foss', 'version': '2015b'}
+toolchainopts = {'optarch': True, 'pic': True, 'openmp': True}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/COMBINE-lab/salmon/archive/']
+
+patches = [
+]
+
+python = 'Python'
+pyver = '2.7.10'
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    ('Boost', '1.59.0', versionsuffix),
+]
+builddependencies = [('CMake', '3.4.0')]
+
+parallel = 1
+
+moduleclass = 'bio'

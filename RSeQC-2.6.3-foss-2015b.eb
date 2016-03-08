@@ -1,0 +1,30 @@
+
+easyblock = 'PythonPackage'
+
+name = "RSeQC"
+version = "2.6.3"
+
+description = """RSeQC package provides a number of useful modules that can comprehensively evaluate high throughput sequence data especially RNA-seq data. Some basic modules quickly inspect sequence quality, nucleotide composition bias, PCR bias and GC bias, while RNA-seq specific modules evaluate sequencing saturation, mapped reads distribution, coverage uniformity, strand specificity, transcript level RNA integrity etc."""
+
+homepage = "http://rseqc.sourceforge.net/"
+
+toolchain = { 'name': 'foss', 'version': '2015b'}
+
+options = {'modulename': 'qcmodule'}
+
+sources = ['%(name)s-%(version)s.tar.gz']
+
+python = "Python"
+python_version = "2.7.10"
+versionsuffix = '-%s-%s' % (python, python_version)
+
+dependencies = [('Python', '2.7.10')]
+
+py_short_ver = ".".join(python_version.split(".")[0:2])
+pylibdir = "lib/python%s/site-packages" % (py_short_ver)
+
+sanity_check_paths = {
+                      'files': [],
+                      'dirs': [pylibdir]
+                     }
+
